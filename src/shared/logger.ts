@@ -36,7 +36,7 @@ export const logger = createLogger({
       datePattern: 'YYYY-MM-DD-HH-MM-SS',
       zippedArchive: true,
       maxSize: '20m',
-      maxFiles: '2d',
+      maxFiles: '1d',
     }),
   ],
 });
@@ -62,13 +62,13 @@ export const errorLogger = createLogger({
         process.cwd(),
         'logs',
         'winston',
-        'successes',
-        'phu-%DATE%-success.log'
+        'errors',
+        'phu-%DATE%-error.log'
       ),
       datePattern: 'YYYY-MM-DD-HH-MM-SS',
       zippedArchive: true,
       maxSize: '20m',
-      maxFiles: '2d',
+      maxFiles: '1d',
     }),
   ],
 });
