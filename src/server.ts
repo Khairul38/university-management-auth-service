@@ -4,8 +4,14 @@ import config from './config';
 import { errorLogger, logger } from './shared/logger';
 import { Server } from 'http';
 
+process.on('uncaughtException', error => {
+  errorLogger.error('Uncaught Exception is detected', error);
+  process.exit(1);
+});
+
+let server: Server;
+
 async function dbConnect() {
-  let server: Server;
   try {
     await mongoose.connect(config.database_url as string);
     logger.info('Database connected successfully');
@@ -17,12 +23,12 @@ async function dbConnect() {
   }
 
   process.on('unhandledRejection', error => {
-    console.log(
-      'Unhandled Rejection is detected, we are closing our server.....'
-    );
     if (server) {
       server.close(() => {
-        errorLogger.error(error);
+        errorLogger.error(
+          'Unhandled Rejection is detected, we are closing our server.....',
+          error
+        );
         process.exit(1);
       });
     } else {
@@ -32,3 +38,10 @@ async function dbConnect() {
 }
 
 dbConnect();
+
+process.on('SIGTERM', () => {
+  logger.info('SIGTERM is received');
+  if (server) {
+    server.close();
+  }
+});
