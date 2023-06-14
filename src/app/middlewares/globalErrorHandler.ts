@@ -3,11 +3,11 @@
 import { ErrorRequestHandler } from 'express';
 import config from '../../config';
 import { IGenericErrorMessage } from '../../interfaces/error';
-import { handleValidationError } from '../../errors/HandleValidationError';
-import { ApiError } from '../../errors/ApiError';
+import { handleValidationError } from '../../errors/handleValidationError';
+import { ApiError } from '../../errors/apiError';
 import { errorLogger } from '../../shared/logger';
 import { ZodError } from 'zod';
-import { handleZodError } from '../../errors/HandleZodError';
+import { handleZodError } from '../../errors/handleZodError';
 
 export const globalErrorHandler: ErrorRequestHandler = (
   error,
