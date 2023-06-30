@@ -32,4 +32,4 @@ router.delete('/:id', deleteSingleAcademicSemester);
 
 router.get('/', getAllAcademicSemester);
 
-export default router;
+export const AcademicSemesterRoutes = router;
