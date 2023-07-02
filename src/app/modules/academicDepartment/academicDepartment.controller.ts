@@ -1,18 +1,18 @@
-import { Request, Response } from 'express';
-import { catchAsync } from '../../../shared/catchAsync';
-import { sendResponse } from '../../../shared/sendResponse';
-import { IAcademicDepartment } from './academicDepartment.interface';
-import httpStatus from 'http-status';
-import { pick } from '../../../shared/pick';
-import { academicDepartmentFilterableFields } from './academicDepartment.constant';
-import { paginationFields } from '../../../constants/pagination';
+import { Request, Response } from "express";
+import { catchAsync } from "../../../shared/catchAsync";
+import { sendResponse } from "../../../shared/sendResponse";
+import { IAcademicDepartment } from "./academicDepartment.interface";
+import httpStatus from "http-status";
+import { pick } from "../../../shared/pick";
+import { academicDepartmentFilterableFields } from "./academicDepartment.constant";
+import { paginationFields } from "../../../constants/pagination";
 import {
   createAcademicDepartmentToDB,
   deleteAcademicDepartmentFromDB,
   getAllAcademicDepartmentFromDB,
   getSingleAcademicDepartmentFromDB,
   updateAcademicDepartmentToDB,
-} from './academicDepartment.service';
+} from "./academicDepartment.service";
 
 export const createAcademicDepartment = catchAsync(
   async (req: Request, res: Response) => {
@@ -22,7 +22,7 @@ export const createAcademicDepartment = catchAsync(
     sendResponse<IAcademicDepartment>(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Academic department created successfully',
+      message: "Academic department created successfully",
       data: result,
     });
   }
@@ -36,7 +36,7 @@ export const getSingleAcademicDepartment = catchAsync(
     sendResponse<IAcademicDepartment>(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Academic department fetched successfully',
+      message: "Academic department fetched successfully",
       data: result,
     });
   }
@@ -55,7 +55,7 @@ export const getAllAcademicDepartment = catchAsync(
     sendResponse<IAcademicDepartment[]>(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Academic departments fetched successfully',
+      message: "Academic departments fetched successfully",
       meta: result.meta,
       data: result.data,
     });
@@ -70,7 +70,7 @@ export const updateAcademicDepartment = catchAsync(
     sendResponse<IAcademicDepartment>(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Academic department updated successfully',
+      message: "Academic department updated successfully",
       data: result,
     });
   }
@@ -84,7 +84,7 @@ export const deleteAcademicDepartment = catchAsync(
     sendResponse<IAcademicDepartment>(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Academic department deleted successfully',
+      message: "Academic department deleted successfully",
       data: result,
     });
   }

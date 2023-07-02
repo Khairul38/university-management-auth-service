@@ -1,19 +1,19 @@
-import { SortOrder, Types } from 'mongoose';
+import { SortOrder, Types } from "mongoose";
 import {
   IAcademicDepartment,
   IAcademicDepartmentFilters,
-} from './academicDepartment.interface';
-import { AcademicDepartment } from './academicDepartment.model';
-import { IPaginationOptions } from '../../../interfaces/pagination';
-import { IGenericResponse } from '../../../interfaces/common';
-import { calculatePagination } from '../../../helpers/paginationHelper';
-import { academicDepartmentSearchableFields } from './academicDepartment.constant';
+} from "./academicDepartment.interface";
+import { AcademicDepartment } from "./academicDepartment.model";
+import { IPaginationOptions } from "../../../interfaces/pagination";
+import { IGenericResponse } from "../../../interfaces/common";
+import { calculatePagination } from "../../../helpers/paginationHelper";
+import { academicDepartmentSearchableFields } from "./academicDepartment.constant";
 
 export const createAcademicDepartmentToDB = async (
   payload: IAcademicDepartment
 ): Promise<IAcademicDepartment | null> => {
   const result = (await AcademicDepartment.create(payload)).populate(
-    'academicFaculty'
+    "academicFaculty"
   );
   return result;
 };
@@ -22,7 +22,7 @@ export const getSingleAcademicDepartmentFromDB = async (
   id: string
 ): Promise<IAcademicDepartment | null> => {
   const result = await AcademicDepartment.findById(id).populate(
-    'academicFaculty'
+    "academicFaculty"
   );
 
   return result;
@@ -45,7 +45,7 @@ export const getAllAcademicDepartmentFromDB = async (
       $or: academicDepartmentSearchableFields.map(field => ({
         [field]: {
           $regex: searchTerm,
-          $options: 'i',
+          $options: "i",
         },
       })),
     });
@@ -55,7 +55,7 @@ export const getAllAcademicDepartmentFromDB = async (
   if (Object.keys(filtersData).length) {
     andConditions.push({
       $and: Object.entries(filtersData).map(([field, value]) => {
-        if (field === 'academicFaculty') {
+        if (field === "academicFaculty") {
           return { [field]: new Types.ObjectId(value) };
         } else {
           return {
@@ -78,7 +78,7 @@ export const getAllAcademicDepartmentFromDB = async (
     andConditions.length > 0 ? { $and: andConditions } : {};
 
   const result = await AcademicDepartment.find(whereConditions)
-    .populate('academicFaculty')
+    .populate("academicFaculty")
     .sort(sortConditions)
     .skip(skip)
     .limit(limit);
@@ -105,7 +105,7 @@ export const updateAcademicDepartmentToDB = async (
     {
       new: true,
     }
-  ).populate('academicFaculty');
+  ).populate("academicFaculty");
 
   return result;
 };

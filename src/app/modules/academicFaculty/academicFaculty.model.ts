@@ -1,8 +1,8 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model } from "mongoose";
 import {
   AcademicFacultyModel,
   IAcademicFaculty,
-} from './academicFaculty.interface';
+} from "./academicFaculty.interface";
 
 const AcademicFacultySchema = new Schema<
   IAcademicFaculty,
@@ -24,6 +24,6 @@ const AcademicFacultySchema = new Schema<
 );
 
 export const AcademicFaculty = model<IAcademicFaculty, AcademicFacultyModel>(
-  'AcademicFaculty',
+  "AcademicFaculty",
   AcademicFacultySchema
 );

@@ -1,12 +1,12 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 export const createAcademicDepartmentZodSchema = z.object({
   body: z.object({
     title: z.string({
-      required_error: 'Title is required',
+      required_error: "Title is required",
     }),
     academicFaculty: z.string({
-      required_error: 'Academic Faculty Id is required',
+      required_error: "Academic Faculty Id is required",
     }),
   }),
 });

@@ -1,18 +1,18 @@
-import { Request, Response } from 'express';
+import { Request, Response } from "express";
 import {
   createAcademicSemesterToDB,
   getAllAcademicSemesterFromDB,
   getSingleAcademicSemesterFromDB,
   updateSingleAcademicSemesterToDB,
   deleteSingleAcademicSemesterFromDB,
-} from './academicSemester.service';
-import { catchAsync } from '../../../shared/catchAsync';
-import { sendResponse } from '../../../shared/sendResponse';
-import httpStatus from 'http-status';
-import { IAcademicSemester } from './academicSemester.interface';
-import { pick } from '../../../shared/pick';
-import { paginationFields } from '../../../constants/pagination';
-import { academicSemesterFilterableFields } from './academicSemester.constant';
+} from "./academicSemester.service";
+import { catchAsync } from "../../../shared/catchAsync";
+import { sendResponse } from "../../../shared/sendResponse";
+import httpStatus from "http-status";
+import { IAcademicSemester } from "./academicSemester.interface";
+import { pick } from "../../../shared/pick";
+import { paginationFields } from "../../../constants/pagination";
+import { academicSemesterFilterableFields } from "./academicSemester.constant";
 
 export const createAcademicSemester = catchAsync(
   async (req: Request, res: Response) => {
@@ -22,7 +22,7 @@ export const createAcademicSemester = catchAsync(
     sendResponse<IAcademicSemester>(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Academic semester created successfully',
+      message: "Academic semester created successfully",
       data: result,
     });
   }
@@ -42,7 +42,7 @@ export const getAllAcademicSemester = catchAsync(
     sendResponse<IAcademicSemester[]>(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Academic semesters retrieved successfully',
+      message: "Academic semesters retrieved successfully",
       meta: result.meta,
       data: result.data,
     });
@@ -58,7 +58,7 @@ export const getSingleAcademicSemester = catchAsync(
     sendResponse<IAcademicSemester>(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Academic semester retrieved successfully',
+      message: "Academic semester retrieved successfully",
       data: result,
     });
   }
@@ -74,7 +74,7 @@ export const updateAcademicSemester = catchAsync(
     sendResponse<IAcademicSemester>(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Academic semester updated successfully',
+      message: "Academic semester updated successfully",
       data: result,
     });
   }
@@ -89,7 +89,7 @@ export const deleteSingleAcademicSemester = catchAsync(
     sendResponse<IAcademicSemester>(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Academic semester deleted successfully',
+      message: "Academic semester deleted successfully",
       data: result,
     });
   }

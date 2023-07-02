@@ -1,18 +1,18 @@
-import { Request, Response } from 'express';
-import { catchAsync } from '../../../shared/catchAsync';
-import { sendResponse } from '../../../shared/sendResponse';
-import { IAcademicFaculty } from './academicFaculty.interface';
-import httpStatus from 'http-status';
-import { pick } from '../../../shared/pick';
-import { academicFacultyFilterableFields } from './academicFaculty.constant';
-import { paginationFields } from '../../../constants/pagination';
+import { Request, Response } from "express";
+import { catchAsync } from "../../../shared/catchAsync";
+import { sendResponse } from "../../../shared/sendResponse";
+import { IAcademicFaculty } from "./academicFaculty.interface";
+import httpStatus from "http-status";
+import { pick } from "../../../shared/pick";
+import { academicFacultyFilterableFields } from "./academicFaculty.constant";
+import { paginationFields } from "../../../constants/pagination";
 import {
   createAcademicFacultyToDB,
   deleteSingleAcademicFacultyFromDB,
   getAllAcademicFacultyFromDB,
   getSingleAcademicFacultyFromDB,
   updateAcademicFacultyToDB,
-} from './academicFaculty.service';
+} from "./academicFaculty.service";
 
 export const createAcademicFaculty = catchAsync(
   async (req: Request, res: Response) => {
@@ -22,7 +22,7 @@ export const createAcademicFaculty = catchAsync(
     sendResponse<IAcademicFaculty>(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Academic Faculty created successfully',
+      message: "Academic Faculty created successfully",
       data: result,
     });
   }
@@ -41,7 +41,7 @@ export const getAllAcademicFaculty = catchAsync(
     sendResponse<IAcademicFaculty[]>(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Academic Faculties retrieved successfully',
+      message: "Academic Faculties retrieved successfully",
       meta: result.meta,
       data: result.data,
     });
@@ -56,7 +56,7 @@ export const getSingleAcademicFaculty = catchAsync(
     sendResponse<IAcademicFaculty>(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Academic Faculty fetched successfully',
+      message: "Academic Faculty fetched successfully",
       data: result,
     });
   }
@@ -71,7 +71,7 @@ export const updateAcademicFaculty = catchAsync(
     sendResponse<IAcademicFaculty>(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Academic Faculty updated successfully',
+      message: "Academic Faculty updated successfully",
       data: result,
     });
   })
@@ -85,7 +85,7 @@ export const deleteSingleAcademicFaculty = catchAsync(
     sendResponse<IAcademicFaculty>(res, {
       statusCode: httpStatus.OK,
       success: true,
-      message: 'Academic Faculty deleted successfully',
+      message: "Academic Faculty deleted successfully",
       data: result,
     });
   }
