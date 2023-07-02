@@ -1,35 +1,35 @@
-import express from 'express';
-import { validateRequest } from '../../middlewares/validateRequest';
+import express from "express";
+import { validateRequest } from "../../middlewares/validateRequest";
 import {
-  createFacultyZodSchema,
-  updateFacultyZodSchema,
-} from './academicFaculty.validation';
+  createAcademicFacultyZodSchema,
+  updateAcademicFacultyZodSchema,
+} from "./academicFaculty.validation";
 import {
   createAcademicFaculty,
   getSingleAcademicFaculty,
   updateAcademicFaculty,
   deleteSingleAcademicFaculty,
   getAllAcademicFaculty,
-} from './academicFaculty.controller';
+} from "./academicFaculty.controller";
 
 const router = express.Router();
 
 router.post(
-  '/create-faculty',
-  validateRequest(createFacultyZodSchema),
+  "/create-faculty",
+  validateRequest(createAcademicFacultyZodSchema),
   createAcademicFaculty
 );
 
-router.get('/:id', getSingleAcademicFaculty);
+router.get("/:id", getSingleAcademicFaculty);
 
 router.patch(
-  '/:id',
-  validateRequest(updateFacultyZodSchema),
+  "/:id",
+  validateRequest(updateAcademicFacultyZodSchema),
   updateAcademicFaculty
 );
 
-router.delete('/:id', deleteSingleAcademicFaculty);
+router.delete("/:id", deleteSingleAcademicFaculty);
 
-router.get('/', getAllAcademicFaculty);
+router.get("/", getAllAcademicFaculty);
 
 export const AcademicFacultyRoutes = router;

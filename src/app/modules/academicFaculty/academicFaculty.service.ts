@@ -1,13 +1,13 @@
-import { SortOrder } from 'mongoose';
-import { calculatePagination } from '../../../helpers/paginationHelper';
-import { IGenericResponse } from '../../../interfaces/common';
-import { IPaginationOptions } from '../../../interfaces/pagination';
-import { academicFacultySearchableFields } from './academicFaculty.constant';
+import { SortOrder } from "mongoose";
+import { calculatePagination } from "../../../helpers/paginationHelper";
+import { IGenericResponse } from "../../../interfaces/common";
+import { IPaginationOptions } from "../../../interfaces/pagination";
+import { academicFacultySearchableFields } from "./academicFaculty.constant";
 import {
   IAcademicFaculty,
   IAcademicFacultyFilters,
-} from './academicFaculty.interface';
-import { AcademicFaculty } from './academicFaculty.model';
+} from "./academicFaculty.interface";
+import { AcademicFaculty } from "./academicFaculty.model";
 
 export const createAcademicFacultyToDB = async (
   payload: IAcademicFaculty
@@ -31,7 +31,7 @@ export const getAllAcademicFacultyFromDB = async (
       $or: academicFacultySearchableFields.map(field => ({
         [field]: {
           $regex: searchTerm,
-          $options: 'i',
+          $options: "i",
         },
       })),
     });
@@ -58,7 +58,7 @@ export const getAllAcademicFacultyFromDB = async (
     .skip(skip)
     .limit(limit);
 
-  const total = await AcademicFaculty.countDocuments();
+  const total = await AcademicFaculty.countDocuments(whereConditions);
 
   return {
     meta: {
