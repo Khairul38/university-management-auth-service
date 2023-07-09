@@ -7,15 +7,30 @@ import {
   deleteAdmin,
   getAllAdmin,
 } from "./admin.controller";
+import { auth } from "../../middlewares/auth";
+import { ENUM_USER_ROLE } from "../../../enums/user";
 
 const router = express.Router();
 
-router.get("/:id", getSingleAdmin);
+router.get(
+  "/:id",
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  getSingleAdmin
+);
 
-router.patch("/:id", validateRequest(updateAdminZodSchema), updateAdmin);
+router.patch(
+  "/:id",
+  validateRequest(updateAdminZodSchema),
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  updateAdmin
+);
 
-router.delete("/:id", deleteAdmin);
+router.delete("/:id", auth(ENUM_USER_ROLE.SUPER_ADMIN), deleteAdmin);
 
-router.get("/", getAllAdmin);
+router.get(
+  "/",
+  auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+  getAllAdmin
+);
 
 export const AdminRoutes = router;

@@ -1,3 +1,4 @@
+/* eslint-disable no-undefined */
 import { Response } from "express";
 
 type IApiResponse<T> = {
@@ -16,9 +17,9 @@ export const sendResponse = <T>(res: Response, data: IApiResponse<T>): void => {
   const responseData: IApiResponse<T> = {
     statusCode: data.statusCode,
     success: data.success,
-    message: data.message,
-    meta: data.meta,
-    data: data.data || null,
+    message: data.message || null,
+    meta: data.meta || null || undefined,
+    data: data.data || null || undefined,
   };
 
   res.status(data.statusCode).json(responseData);

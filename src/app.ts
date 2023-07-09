@@ -1,14 +1,17 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import express, { Application, Request, Response, NextFunction } from "express";
 import cors from "cors";
 import { globalErrorHandler } from "./app/middlewares/globalErrorHandler";
+import httpStatus from "http-status";
+import cookieParser from "cookie-parser";
 // Application Routes
 import routers from "./app/routes";
-import httpStatus from "http-status";
 
 const app: Application = express();
 
 // using cors
 app.use(cors());
+app.use(cookieParser());
 
 // parse data
 app.use(express.json());
